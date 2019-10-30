@@ -7,10 +7,14 @@ export interface Card extends Document {
     body: string
 }
 
-const Schema = new mongoose.Schema({
-    title: String,
-    author: String,
-    body: String,
-})
+const Schema = new mongoose.Schema(
+    {
+        title: String,
+        author: String,
+        body: String,
+    },
+    // Adds createdAt and updatedAt to the model
+    { timestamps: true }
+)
 
 export default mongoose.model<Card>('Card', Schema)

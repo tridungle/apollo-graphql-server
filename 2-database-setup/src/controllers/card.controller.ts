@@ -7,6 +7,7 @@ export interface CreateCardInput {
     body: string
 }
 
+// Create a new card from the given input
 export function createCard({
     title,
     author,
@@ -17,8 +18,21 @@ export function createCard({
         author,
         body,
     })
-        .then(data => data)
-        .catch(error => {
+        .then((data: Card) => data)
+        .catch((error: Error) => {
+            throw error
+        })
+}
+
+export interface GetAllCardsInput {
+    limit?: number
+}
+
+export function getAllCards({ limit }: GetAllCardsInput) {
+    return CardModel.find({})
+        .limit(limit ? limit : 0)
+        .then((data: Card[]) => data)
+        .catch((error: Error) => {
             throw error
         })
 }
