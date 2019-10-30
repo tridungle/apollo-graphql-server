@@ -2,14 +2,7 @@
 import { ApolloServer } from 'apollo-server'
 import typeDefs from './schema'
 import connect from './database/connect'
-
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
-const resolvers = {
-    Query: {
-        cards: () => cards,
-    },
-}
+import resolvers from './resolvers'
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
