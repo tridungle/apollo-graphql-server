@@ -1,3 +1,4 @@
+// src/schema.ts
 import { gql } from 'apollo-server'
 
 // A schema is a collection of type definitions (hence "typeDefs")
@@ -13,23 +14,11 @@ const typeDefs = gql`
         body: String
     }
 
-    # Define the input values that your mutation will accept
-    # The ! means the field is mandatory
-    input CreateCardInput {
-        title: String!
-        author: String!
-        body: String!
-    }
-
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
     # case, the "cards" query returns an array of zero or more Cards (defined above).
     type Query {
         cards: [Card]
-    }
-
-    type Mutation {
-        CreateCard(input: CreateCardInput): Card
     }
 `
 

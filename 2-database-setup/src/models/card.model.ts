@@ -1,3 +1,4 @@
+// src/models/card/model.ts
 import mongoose, { Document } from 'mongoose'
 
 export interface Card extends Document {

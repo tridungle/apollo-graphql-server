@@ -1,3 +1,4 @@
+// src/controllers/card.controller.ts
 import CardModel, { Card } from '../models/card.model'
 
 export interface CreateCardInput {
@@ -6,7 +7,11 @@ export interface CreateCardInput {
     body: string
 }
 
-export function createCard({ title, author, body }: CreateCardInput) {
+export function createCard({
+    title,
+    author,
+    body,
+}: CreateCardInput): Promise<Card | Error> {
     return CardModel.create({
         title,
         author,
