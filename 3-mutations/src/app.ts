@@ -2,19 +2,6 @@
 import { ApolloServer } from 'apollo-server'
 import typeDefs from './schema'
 import connect from './database/connect'
-// Hard code some data to server over the GraphQL endpoint
-const cards = [
-    {
-        title: 'Card one title',
-        author: 'J.K. Rowling',
-        body: 'This is the first card!',
-    },
-    {
-        title: 'Card two title',
-        author: 'Michael Crichton',
-        body: 'This is the second card!',
-    },
-]
 
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
