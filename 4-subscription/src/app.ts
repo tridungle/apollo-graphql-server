@@ -1,8 +1,10 @@
 // src/app.ts
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer, PubSub } from 'apollo-server'
 import typeDefs from './schema'
 import connect from './database/connect'
 import resolvers from './resolvers'
+
+export const pubsub = new PubSub()
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.

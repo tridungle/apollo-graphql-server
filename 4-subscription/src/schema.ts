@@ -2,6 +2,10 @@
 import { gql } from 'apollo-server'
 
 const typeDefs = gql`
+    # New subscriptions type
+    type Subscription {
+        CardCreated: Card
+    }
     type Card {
         _id: ID!
         title: String

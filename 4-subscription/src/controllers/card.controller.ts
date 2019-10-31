@@ -1,5 +1,7 @@
 // src/controllers/card.controller.ts
 import CardModel, { Card } from '../models/card.model'
+import { CARD_CREATED } from '../constants'
+import { pubsub } from '../app'
 
 export interface CreateCardInput {
     title: string
@@ -8,12 +10,12 @@ export interface CreateCardInput {
 }
 
 // Create a new card from the given input
-export function createCard({
+export async function createCard({
     title,
     author,
     body,
 }: CreateCardInput): Promise<Card | Error> {
-    return CardModel.create({
+    const card = await CardModel.create({
         title,
         author,
         body,
@@ -22,6 +24,11 @@ export function createCard({
         .catch((error: Error) => {
             throw error
         })
+
+    // Publish the creation of a new card to whoever is listening
+    pubsub.publish(CARD_CREATED, { CardCreated: card })
+
+    return card
 }
 
 export interface GetAllCardsInput {
