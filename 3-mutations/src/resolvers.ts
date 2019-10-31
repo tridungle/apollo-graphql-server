@@ -10,7 +10,7 @@ const resolvers = {
         cards: (_: null, { input }: { input: GetAllCardsInput }) =>
             getAllCards({ ...input }),
     },
-    Mutations: {
+    Mutation: {
         CreateCard: (_: null, { input }: { input: CreateCardInput }) =>
             createCard({ ...input }),
     },

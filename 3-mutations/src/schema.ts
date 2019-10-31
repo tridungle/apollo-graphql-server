@@ -20,6 +20,16 @@ const typeDefs = gql`
     type Query {
         cards: [Card]
     }
+
+    input CreateCardInput {
+        title: String
+        author: String
+        body: String
+    }
+
+    type Mutation {
+        CreateCard(input: CreateCardInput): Card
+    }
 `
 
 export default typeDefs
